@@ -5,20 +5,17 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
+import LikeButton from "./LikeButton";
 
 const LikeSection = (props) => {
   // 🔥 Make sure the parent of LikeSection is passing the right props!
-  const { likePost, numberOfLikes } = props;
+  const { likePost, numberOfLikes, isLiked } = props;
 
   return (
     <div>
-      <div
-        className="like-section"
-        key="likes-icons-container"
-        onClick={likePost}
-      >
-        <div className="like-section-wrapper">
-          <FontAwesomeIcon icon={faHeart} />
+      <div className="like-section" key="likes-icons-container">
+        <div className="like-section-wrapper" onClick={likePost}>
+          <LikeButton isLiked={isLiked} />
         </div>
         <div className="like-section-wrapper">
           <FontAwesomeIcon icon={faComment} />

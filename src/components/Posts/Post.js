@@ -21,6 +21,7 @@ const Post = (props) => {
       <LikeSection
         numberOfLikes={post.likes}
         likePost={() => likePost(post.id)}
+        isLiked={post.userliked}
       />
       <Comments comments={post.comments} />
     </div>

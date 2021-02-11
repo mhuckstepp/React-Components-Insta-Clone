@@ -31,6 +31,8 @@ const App = () => {
           post.userliked = true;
           return { ...post };
         } else {
+          post.likes = post.likes - 1;
+          post.userliked = false;
           return { ...post };
         }
       })
