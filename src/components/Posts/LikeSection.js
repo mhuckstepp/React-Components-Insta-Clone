@@ -4,7 +4,7 @@
 // (As a stretch goal, you might want to prevent your user from "liking" the same post more than once.)
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
+import { faComment } from "@fortawesome/free-regular-svg-icons";
 import LikeButton from "./LikeButton";
 
 const LikeSection = (props) => {
