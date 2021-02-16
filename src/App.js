@@ -15,19 +15,25 @@ import "./App.css";
 const App = () => {
   const [posts, setPosts] = useState(data);
   const [searchTerm, setSearchTerm] = useState(null);
-  const [value, setvalue] = useState("");
+  const [value, setValue] = useState("");
 
-  function handleChange(event) {
-    setvalue(event.target.value);
-  }
-
-  function handleSubmit(postId) {
+  const addComment = (postId) => {
     setPosts(
       posts.map((post) => {
-        return;
+        if (postId === post.id && value) {
+          post.comments.push({
+            id: Math.ceil(Math.random() * 10000),
+            text: value,
+            username: "KewlUser",
+          });
+          setValue("");
+          return post;
+        } else {
+          return post;
+        }
       })
     );
-  }
+  };
 
   const likePost = (postId) => {
     /*
@@ -57,8 +63,9 @@ const App = () => {
       <Posts
         posts={posts}
         likePost={likePost}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        addComment={addComment}
+        value={value}
+        setValue={setValue}
       />
       {/* Check the implementation of each component, to see what props they require, if any! */}
     </div>

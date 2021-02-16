@@ -5,30 +5,23 @@ import { useState } from "react";
 
 const Comments = (props) => {
   // 🔥 Make sure the parent of Comments is passing the right props!
-  const { comments } = props;
-  const [commentsUpd, setCommentsUpd] = useState(comments);
-  const [value, setvalue] = useState("");
+  const { comments, addComment, value, setValue, post } = props;
 
   function handleChange(event) {
-    setvalue(event.target.value);
-  }
-
-  function handleSubmit(event) {
-    setCommentsUpd([...commentsUpd, value]);
+    setValue(event.target.value);
+    console.log(value);
   }
 
   return (
     <div>
-      {commentsUpd.map((elem) => (
+      {comments.map((elem) => (
         <Comment comment={elem} key={elem.id} />
       ))}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Comment:
-          <input type="text" value={value} onChange={handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <button onClick={addComment}> Post</button>
+      <label>
+        Comment:
+        <input type="text" value={value} onChange={handleChange} />
+      </label>
     </div>
   );
 };

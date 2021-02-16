@@ -5,7 +5,7 @@ import PostHeader from "./PostHeader";
 
 const Post = (props) => {
   // 🔥 Make sure the parent of Post is passing the right props!
-  const { post, likePost, handleChange, handleSubmit } = props;
+  const { post, likePost, addComment, value, setValue } = props;
 
   return (
     <div className="post-border">
@@ -27,8 +27,9 @@ const Post = (props) => {
       {/* Comments also wants its props! */}
       <Comments
         comments={post.comments}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        addComment={() => addComment(post.id)}
+        value={value}
+        setValue={setValue}
       />
     </div>
   );
